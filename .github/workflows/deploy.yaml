@@ -1,0 +1,16 @@
+name: "Mi primer deploy"
+
+on: 
+  push:
+    branches: ["main"]
+  
+jobs: 
+  deploy-pedro-prueba:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Hacemos pull del codigo"
+    - run: echo "Hacer migraciones"
+    - run: echo "Generar binario"
+    - run: echo "Publicar version"
+
+      
