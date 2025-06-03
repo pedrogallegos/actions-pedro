@@ -6,9 +6,11 @@ jobs:
     first_jobs:
         runs-on: ubuntu-latest
 
+        env:
+            MY_ENV_VAR: "Hola mundo"
         steps:
             - name: "Hola mundo"
-              run: echo "Hola mundo desde el primer job"
+              run: echo "Hola mundo desde el primer job ${MY_ENV_VAR}"
     second_job:
         if: ${{ github.ref == 'refs/heads/main' }}
         needs: first_jobs
