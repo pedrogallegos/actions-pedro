@@ -5,12 +5,12 @@ on: push
 jobs:
     first_jobs:
         runs-on: ubuntu-latest
-
-        env:
-            NAME: Pedro
         steps:
               - name: Working dir
-                run: echo "My variable= Hola mundo" >> $GITHUB_OUTPUT
+                id: step_1
+                run: echo "my_variable= Hola mundo" >> $GITHUB_OUTPUT
+              - name: Obtener mensaje
+                run: echo "${{steps.step_1.outputs.my_variable}}"
     second_job:
         if: ${{ github.ref == 'refs/heads/main' }}
         needs: first_jobs
