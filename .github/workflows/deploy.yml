@@ -5,6 +5,9 @@ on: push
 jobs:
     first_jobs:
         runs-on: ubuntu-latest
+
+        outputs:
+            salida: hola
         steps:
               - name: Working dir
                 id: step_1
@@ -16,6 +19,9 @@ jobs:
         needs: first_jobs
         runs-on: ubuntu-latest
 
+        env:
+            SALIDA: ${{needs.first_jobs.outputs.salida}}
+
         steps:
             - name: "Hola mundo"
-              run: echo "Hola mundo desde el segundo job 2"
+              run: echo "${SALIDA}"
